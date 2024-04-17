@@ -2,7 +2,6 @@ package org.example.definitions;
 
 import io.cucumber.java.en.And;
 import org.example.pageObjects.*;
-import org.example.utils.TestSetUp;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,17 +9,16 @@ import org.junit.Assert;
 
 public class LoginPageDefinitions {
 
-    TestSetUp setUp;
     public LoginPageObject loginPage;
     public LandingPageObject landingPageObject;
     public HyundaiLoginPageObject hyundaiLoginPage;
+    private ApplicationHooks hooks;
 
-
-    public LoginPageDefinitions(TestSetUp setUp)  {
-        this.setUp = setUp;
-        this.loginPage = setUp.pageObjectManager.getLoginPage();
-        this.landingPageObject = setUp.pageObjectManager.getLandingPage();
-        this.hyundaiLoginPage = setUp.pageObjectManager.getHyundaiPage();
+    public LoginPageDefinitions(ApplicationHooks hooks)  {
+        this.hooks = hooks;
+        this.loginPage = PageObjectManager.getLoginPage(hooks.getDriver());
+        this.landingPageObject = PageObjectManager.getLandingPage(hooks.getDriver());
+        this.hyundaiLoginPage = PageObjectManager.getHyundaiPage(hooks.getDriver());
     }
 
 

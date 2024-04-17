@@ -56,11 +56,6 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>tech.grasshopper</groupId>
-      <artifactId>extentreports-cucumber7-adapter</artifactId>
-      <version>${extentreports.cucumber7.adapter.version}</version>
-    </dependency>
 
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -70,19 +65,11 @@
     </dependency>
 
     <!-- WebDriver Manager Dependency -->
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>${webdrivermanager.version}</version>
-    </dependency>
+
 
     <!-- coonfig report -->
 
-    <dependency>
-      <groupId>net.masterthought</groupId>
-      <artifactId>cucumber-reporting</artifactId>
-      <version>${maven.cucumber.reporting.version}</version>
-    </dependency>
+
 
   </dependencies>
   <build>

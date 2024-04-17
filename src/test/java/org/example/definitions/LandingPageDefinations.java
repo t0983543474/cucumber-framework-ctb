@@ -6,20 +6,19 @@ import io.cucumber.java.en.Then;
 import org.example.pageObjects.LandingPageObject;
 import org.example.pageObjects.LoginPageObject;
 import org.example.pageObjects.PageObjectManager;
-import org.example.utils.TestSetUp;
 import org.junit.Assert;
 
 public class LandingPageDefinations {
 
-    TestSetUp setUp;
-    PageObjectManager pageObjectManager;
+    private ApplicationHooks hooks;
     public LoginPageObject loginPage;
 
+    PageObjectManager pageObjectManager;
     public LandingPageObject landingPageObject;
-    public LandingPageDefinations(TestSetUp setUp) {
-        this.setUp = setUp;
-        this.loginPage = setUp.pageObjectManager.getLoginPage();
-        this.landingPageObject = setUp.pageObjectManager.getLandingPage();
+    public LandingPageDefinations(ApplicationHooks hooks) {
+        this.hooks = hooks;
+        this.loginPage =PageObjectManager.getLoginPage(hooks.getDriver());
+        this.landingPageObject = PageObjectManager.getLandingPage(hooks.getDriver());
     }
 
     @Given("User go to Login Page")
