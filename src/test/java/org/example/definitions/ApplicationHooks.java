@@ -56,20 +56,32 @@ public class ApplicationHooks {
         return driver;
     }
 
+//    @After
+//    public void tearDown() {
+//
+//        getDriver().quit();
+//    }
     @After
-    public void tearDown() {
+    public  void tearDown(Scenario scenario) {
+
+        //validate if scenario has failed
+        if(scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
+
         getDriver().quit();
     }
 
-    @AfterStep
-    public void addScreenshot(Scenario scenario) {
-
-        WebDriver driver =  getDriver();
-        if(scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "image");
-        }
-
-    }
+//    @AfterStep
+//    public void addScreenshot(Scenario scenario) {
+//
+//        WebDriver driver =  getDriver();
+//        if(scenario.isFailed()) {
+//            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//            scenario.attach(screenshot, "image/png", "image");
+//        }
+//
+//    }
 
 }

@@ -69,6 +69,17 @@
 
     <!-- coonfig report -->
 
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${extent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.grasshopper</groupId>
+      <artifactId>extentreports-cucumber7-adapter</artifactId>
+      <version>1.14.0</version>
+      <scope>test</scope>
+    </dependency>
 
 
   </dependencies>
@@ -93,38 +104,39 @@
           <parallel>methods</parallel>
           <useUnlimitedThreads>true</useUnlimitedThreads>
           <testFailureIgnore>true</testFailureIgnore>
+          <argLine>--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED</argLine>
         </configuration>
 
       </plugin>
 
       <!-- coonfig report -->
 
-      <plugin>
-        <groupId>net.masterthought</groupId>
-        <artifactId>maven-cucumber-reporting</artifactId>
-        <version>${maven.cucumber.reporting.version}</version>
+<!--      <plugin>-->
+<!--        <groupId>net.masterthought</groupId>-->
+<!--        <artifactId>maven-cucumber-reporting</artifactId>-->
+<!--        <version>${maven.cucumber.reporting.version}</version>-->
 
-        <executions>
-          <execution>
-            <id>execution</id>
-            <phase>test</phase>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <projectName>Cucumber Reporting Example With JUnit4</projectName>
-              <!--              <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>-->
-              <!--              <inputDirectory>${project.build.directory}</inputDirectory>-->
-              <outputDirectory>${project.build.directory}/cucumber-reports/cucumber-reporting</outputDirectory>
-              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-              <jsonFiles>
-                <param>**/*.json</param>
-              </jsonFiles>
-              <checkBuildResult>false</checkBuildResult>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>execution</id>-->
+<!--            <phase>test</phase>-->
+<!--            <goals>-->
+<!--              <goal>generate</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <projectName>Cucumber Reporting Example With JUnit4</projectName>-->
+<!--              &lt;!&ndash;              <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>&ndash;&gt;-->
+<!--              &lt;!&ndash;              <inputDirectory>${project.build.directory}</inputDirectory>&ndash;&gt;-->
+<!--              <outputDirectory>${project.build.directory}/cucumber-reports/cucumber-reporting</outputDirectory>-->
+<!--              <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>-->
+<!--              <jsonFiles>-->
+<!--                <param>**/*.json</param>-->
+<!--              </jsonFiles>-->
+<!--              <checkBuildResult>false</checkBuildResult>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
 
 
     </plugins>
