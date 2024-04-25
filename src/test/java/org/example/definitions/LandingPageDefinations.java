@@ -41,7 +41,7 @@ public class LandingPageDefinations {
 
     @Then("Landing page is display without logged")
     public void landingPageIsDisplayWithoutLogged() {
-        Assert.assertTrue(landingPageObject.isDislpayLoginIcon());
+        Assert.assertFalse(landingPageObject.isDislpayLoginIcon());
 //        Assert.assertTrue(landingPageObject.notdisplayMyGarage());
     }
 

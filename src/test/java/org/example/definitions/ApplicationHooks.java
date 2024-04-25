@@ -9,6 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
@@ -42,6 +43,12 @@ public class ApplicationHooks {
                 case "firefox":
                     driver = new FirefoxDriver();
                     break;
+                case "chrome-h":
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--headless");
+                    driver = new ChromeDriver(options);
             }
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
