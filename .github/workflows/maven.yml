@@ -37,6 +37,21 @@ jobs:
         branch: gh-pages
         folder: ./test-output/Html
 
+    - uses: licenseware/send-email-notification@v1
+      with:
+        api-key: ${{ secrets.SENDGRID_API_KEY }}
+        subject: Test Subject
+        from-email: trangle.uit@gmail.com
+        to-email: trang.le@inventis.vn
+        markdown-body: |
+          # My Markdown Title
+
+          This is a description
+
+          ## Another header
+
+          Another description
+
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
