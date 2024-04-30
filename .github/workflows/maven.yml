@@ -37,20 +37,41 @@ jobs:
         branch: gh-pages
         folder: ./test-output/Html
 
-    - uses: licenseware/send-email-notification@v1
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3
       with:
-        api-key: ${{ secrets.SENDGRID_API_KEY }}
-        subject: Test Subject
-        from-email: trangle.uit@gmail.com
-        to-email: trang.le@inventis.vn
-        markdown-body: |
-          # My Markdown Title
-
-          This is a description
-
-          ## Another header
-
-          Another description
+        # Required mail server address:
+        server_address: smtp.gmail.com
+        # Required mail server port:
+        server_port: 465
+        # Optional (recommended): mail server username:
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:
+        password: ${{secrets.MAIL_PASSWORD}}
+        # Required mail subject:
+        subject: Github Actions job result
+        # Required recipients' addresses:
+        to: trang.le@inventis.vn,trangltt180695@gmail.com
+        # Required sender full name (address can be skipped):
+        from: Luke Skywalker # <trangle.uit@gmail.com>
+        # Optional whether this connection use TLS (default is true if server_port is 465)
+        secure: true
+        # Optional plain body:
+        body: Build job of ${{github.repository}} completed successfully!
+        # Optional HTML body read from file:
+        html_body: file://index.html
+        # Optional carbon copy recipients:
+        cc: kyloren@example.com,leia@example.com
+        # Optional blind carbon copy recipients:
+        bcc: r2d2@example.com,hansolo@example.com
+        # Optional recipient of the email response:
+        reply_to: trangle.uit@gmail.com
+        # Optional unsigned/invalid certificates allowance:
+        ignore_cert: true
+        # Optional converting Markdown to HTML (set content_type to text/html too):
+        convert_markdown: true
+        # Optional attachments:
+        attachments: attachments.zip,git.diff,./dist/static/main.js
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
